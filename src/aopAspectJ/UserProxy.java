@@ -3,6 +3,7 @@ package aopAspectJ;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
  */
 
 //增强的类
+    @Order(1)
     @Component
     @Aspect //生成代理对象
 public class UserProxy {
