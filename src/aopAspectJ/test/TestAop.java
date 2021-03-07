@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 /**
  * @Author: KenChen
- * @Description:
+ * @Description: aop 注解方式测试
  * @Date: Create in  2021/3/7 上午10:54
  */
 public class TestAop {

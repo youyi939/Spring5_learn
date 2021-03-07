@@ -1,8 +1,7 @@
 package aopAspectJ;
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
@@ -24,9 +23,32 @@ public class UserProxy {
         System.out.println("前置通知。。。before");
     }
 
+//    最终通知
     @After(value = "execution(* aopAspectJ.User.add(..))")
     public void after(){
         System.out.println("after通知");
     }
 
+//    后置通知
+    @AfterReturning(value = "execution(* aopAspectJ.User.add(..))")
+    public void afterReturning(){
+        System.out.println("afterReturning通知");
+    }
+
+//    异常通知
+    @AfterThrowing(value = "execution(* aopAspectJ.User.add(..))")
+    public void afterThrowing(){
+        System.out.println("afterThrowing通知");
+    }
+
+//    环绕通知
+    @Around(value = "execution(* aopAspectJ.User.add(..))")
+    public void around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("环绕之前");
+
+//        被增强的方法执行
+        proceedingJoinPoint.proceed();
+
+        System.out.println("环绕之后");
+    }
 }
